@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def oper_list(request):
+    return render(request, 'operkassa/oper_list.html', {})
