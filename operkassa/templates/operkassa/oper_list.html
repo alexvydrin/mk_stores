@@ -1,72 +1,75 @@
-{% load static %}
-<html>
-    <head>
-        <title>Operations</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/operkassa.css' %}">
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Operations</a></h1>
-        </div>
+{% extends 'operkassa/base.html' %}
 
-        <div>
-            <table border="1">
-                <caption>
-                    Операции
-                </caption>
-                <thead>
-                    <tr>
-                        <th>
-                            Дата
-                        </th>
-                        <th>
-                            Приход
-                        </th>
-                        <th>
-                            Расход
-                        </th>
-                        <th>
-                            Комментарий
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for oper in opers %}
-                        <tr>
-                            <td>
-                                {{ oper.date }}
-                            </td>
-                            <td align="right">
-                                {{ oper.sum_debet }}
-                            </td>
-                            <td align="right">
-                                {{ oper.sum_credit }}
-                            </td>
-                            <td>
-                                {{ oper.text }}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-                <tfoot align="right">
-                    <tr>
-                        <td>
-                            Итого
-                        </td>
-                        <td>
-                           {{ sum_debet_total }}
-                        </td>
-                        <td>
-                            {{ sum_credit_total }}
-                        </td>
-                        <td>
+<div>
+    <h1><a href="/">Operations</a></h1>
+</div>
 
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </body>
-</html>
+
+{% block content %}
+<div>
+    <table border="1">
+        <caption>
+            Операции
+        </caption>
+        <thead>
+            <tr>
+                <th>
+                    Дата
+                </th>
+                <th>
+                    Приход
+                </th>
+                <th>
+                    Расход
+                </th>
+                <th>
+                    Комментарий
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for oper in opers %}
+                <tr>
+                    <td>
+                        {{ oper.date }}
+                    </td>
+                    <td align="right">
+                        {{ oper.sum_debet }}
+                    </td>
+                    <td align="right">
+                        {{ oper.sum_credit }}
+                    </td>
+                    <td>
+                        {{ oper.text }}
+                    </td>
+                    <td>
+                        <a href="{% url 'oper_detail' pk=oper.pk %}"> Изменить </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    Итого
+                </td>
+                <td>
+                   {{ sum_debet_total }}
+                </td>
+                <td>
+                    {{ sum_credit_total }}
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+{% endblock %}

@@ -14,14 +14,27 @@ thead {
     background-color: lightblue;
 }
 
-tbody {
-    background-color: lightgrey;
+th {
+    text-align: center;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: lightgray;
+}
+
+tbody tr:nth-child(2n+1) {
+    background-color: #999999;
 }
 
 tfoot {
     background-color: lightgreen;
+    text-align: right;
 }
 
 td {
     padding: 5px;
+}
+
+.page-header h1 {
+    text-align: center;
 }

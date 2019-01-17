@@ -1,0 +1,10 @@
+{% extends 'operkassa/base.html' %}
+
+{% block content %}
+    <div class="oper">
+        <p> Дата: {{ oper.date }}</p>
+        <p> Приход: {{ oper.sum_debet }}</p>
+        <p> Расход: {{ oper.sum_credit }}</p>
+        <p>{{ oper.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}
