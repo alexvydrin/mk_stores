@@ -6,5 +6,8 @@
         <p> Приход: {{ oper.sum_debet }}</p>
         <p> Расход: {{ oper.sum_credit }}</p>
         <p>{{ oper.text|linebreaksbr }}</p>
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'oper_edit' pk=oper.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
     </div>
 {% endblock %}
